@@ -47,7 +47,7 @@ namespace Sniffer
             Console.WriteLine();
 
             Console.WriteLine("Время: " + packet.Timeval.Date);
-            Console.WriteLine("=================================\n");
+            Console.WriteLine("\n=================================\n");
         }
 
         private static void Print(TransportPacket packet)
