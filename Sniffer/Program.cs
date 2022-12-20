@@ -22,8 +22,6 @@ namespace Sniffer
             captureDevice.OnPacketArrival += device_OnPacketArrival;
             captureDevice.Open(DeviceModes.Promiscuous, 2000);
             captureDevice.Capture();
-            Console.ReadLine();
-            captureDevice.StopCapture();
         }
 
         private static void device_OnPacketArrival(object sender, PacketCapture e)
