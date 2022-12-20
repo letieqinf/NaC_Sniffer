@@ -12,16 +12,20 @@ namespace Sniffer
         {
             var deviceList = CaptureDeviceList.Instance;
             Console.WriteLine("Доступные устройства: ");
-            foreach (var device in deviceList.Select((value, i) => new { i, value.Name, value.Description }))
-                Console.WriteLine($"{device.i}) {device.Name} {device.Description};");
+            foreach (var device in deviceList.Select((value, i) 
+                         => new { i, value.Name, value.Description }))
+                Console.WriteLine($"[{device.i}] Name: {device.Name}; Desc: {device.Description};");
             Console.WriteLine();
-            Console.ReadLine();
+            Console.ReadKey();
             
             var captureDevice = deviceList[2];
             
             captureDevice.OnPacketArrival += device_OnPacketArrival;
             captureDevice.Open(DeviceModes.Promiscuous, 2000);
-            captureDevice.Capture();
+            
+            captureDevice.StartCapture();
+            Console.ReadKey();
+            captureDevice.StopCapture();
         }
 
         private static void device_OnPacketArrival(object sender, PacketCapture e)
