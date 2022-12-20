@@ -14,7 +14,7 @@ namespace Sniffer
             Console.WriteLine("Доступные устройства: ");
             foreach (var device in deviceList.Select((value, i) 
                          => new { i, value.Name, value.Description }))
-                Console.WriteLine($"[{device.i}] Name: {device.Name}; Desc: {device.Description};");
+                Console.WriteLine($"[{device.i + 1}] Name: {device.Name}; Desc: {device.Description};");
             Console.WriteLine();
             Console.ReadKey();
             
